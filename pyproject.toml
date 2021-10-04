@@ -12,6 +12,16 @@ Django = "^3.2.7"
 pytest = "^5.2"
 autopep8 = "^1.5.7"
 
+# See https://github.com/microsoft/pyright/blob/main/docs/getting-started.md
+pyright = "^0.0.10"
+django-types = "^0.8.1"
+# and https://github.com/microsoft/pyright/blob/main/docs/configuration.md#sample-pyprojecttoml-file
+[tool.pyright]
+include = ["."]
+useLibraryCodeForTypes = true
+reportMissingImports = true
+reportMissingTypeStubs = true
+
 [build-system]
 requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
