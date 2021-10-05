@@ -7,6 +7,7 @@ Install [poetry](https://python-poetry.org/) following their guide.
 ```sh
 poetry install
 poetry run python manage.py runserver
+poetry run pyright # type check
 ```
 
 ## FAQ
