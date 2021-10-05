@@ -1,0 +1,25 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Py Library - Chapter Overview</title>
+  </head>
+  <body>
+    <h1>{{ book.title }}</h1>
+    <h2>Chapters</h2>
+    {% if chapters %}
+    <ol>
+      {% for chapter in chapters %}
+      <li>
+        <a href="/books/{{ book.id }}/chapters/{{ chapter.id }}"
+          >{{ chapter.title }}</a
+        >
+      </li>
+      {% endfor %}
+    </ol>
+    {% else %}
+    <p>No chapters found.</p>
+    {% endif %}
+  </body>
+</html>
