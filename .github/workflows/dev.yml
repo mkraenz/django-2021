@@ -12,12 +12,24 @@ jobs:
         uses: actions/setup-python@v1
         with:
           python-version: 3.6
+
       - name: Install poetry
-        uses: abatilo/actions-poetry@v2.0.0
+        uses: snok/install-poetry@v1.2.1
         with:
-          poetry-version: 1.1
+          version: 1.1
+          virtualenvs-create: true
+          virtualenvs-in-project: true
+
+      - name: Load cached venv
+        id: cached-poetry-dependencies
+        uses: actions/cache@v2
+        with:
+          path: .venv
+          key: venv-${{ runner.os }}-${{ hashFiles('**/poetry.lock') }}
       - name: Install dependencies
         run: poetry install
+        if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
+
       - name: Type-check
         run: poetry run pyright
       - name: Tests
