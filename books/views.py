@@ -2,37 +2,38 @@
 # Create your views here.
 from datetime import date
 
+from django.db.models.query import QuerySet
 from django.http import HttpRequest, HttpResponse
 from django.http.response import HttpResponseRedirect
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import render
 from django.urls import reverse
+from django.views import generic
 
 from books.models import Book, Chapter
 
 
-def index(request: HttpRequest) -> HttpResponse:
-    books: list[Book] = Book.objects.all()
-    context = {
-        'books': books,
-    }
-    return render(request, 'books/index.html', context)
+class IndexView(generic.ListView):
+    template_name = 'books/index.html'
+    context_object_name = 'books'
+
+    def get_queryset(self) -> "QuerySet[Book]":
+        return Book.objects.all()
 
 
-def book_details(request: HttpRequest, book_id: int) -> HttpResponse:
-    book: Book = get_object_or_404(Book, pk=book_id)
-    return render(request, 'books/book-details.html', {'book': book})
+class BookDetailsView(generic.DetailView):
+    template_name = "books/book_details.html"
+    model = Book
 
 
-def chapters(request: HttpRequest, book_id: int) -> HttpResponse:
-    book: Book = Book.objects.get(id=book_id)
-    chapters: list[Chapter] = book.chapter_set.all().order_by('numeral')
-    return render(request, 'books/chapters.html', {'book': book, 'chapters': chapters})
+class BookChaptersView(generic.DetailView):
+    template_name = "books/chapters.html"
+    model = Book
 
 
 def chapter_details(request: HttpRequest, book_id: int, chapter_numeral: int) -> HttpResponse:
-    book: Book = Book.objects.get(id=book_id)
+    book = Book.objects.get(id=book_id)
     chapter: Chapter = book.chapter_set.get(numeral=chapter_numeral)
-    return render(request, 'books/chapter-details.html', {'book': book, 'chapter': chapter})
+    return render(request, 'books/chapter_details.html', {'book': book, 'chapter': chapter})
 
 
 def add_book(request: HttpRequest) -> HttpResponse:
