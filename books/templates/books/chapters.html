@@ -12,7 +12,7 @@
     <ol>
       {% for chapter in chapters %}
       <li>
-        <a href="/books/{{ book.id }}/chapters/{{ chapter.id }}"
+        <a href="{% url 'chapter_details' book.id chapter.id %}"
           >{{ chapter.title }}</a
         >
       </li>

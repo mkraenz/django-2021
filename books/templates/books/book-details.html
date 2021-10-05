@@ -9,7 +9,7 @@
     <h1>{{ book.title }}</h1>
     <p>Author: {{ book.author }}</p>
     <p>Published: {{ book.pub_date }}</p>
-    <a href="/books/{{ book.id }}/chapters/">
+    <a href="{% url 'chapters' book.id %}">
       <button>Chapter overview</button></a
     >
   </body>
