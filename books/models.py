@@ -10,6 +10,9 @@ class Book(models.Model):
     author = models.CharField(max_length=200)
     pub_date = models.DateField("date published")
 
+    objects: "models.Manager[Book]"
+    chapter_set: "models.Manager[Chapter]"
+
     def __str__(self):
         return f'{self.title} --- {self.author}'
 
@@ -22,6 +25,8 @@ class Chapter(models.Model):
     book = models.ForeignKey(Book, on_delete=models.CASCADE)
     title = models.CharField(max_length=200, unique=True)
     numeral = models.IntegerField(default=1)
+
+    objects: "models.Manager[Chapter]"
 
     def __str__(self):
         return f'{self.book.title} --- {self.numeral} - {self.title}'
