@@ -5,6 +5,7 @@ from django.db import models
 
 
 class Book(models.Model):
+    id = models.AutoField(primary_key=True)
     title = models.CharField(max_length=200)
     author = models.CharField(max_length=200)
     pub_date = models.DateField("date published")
@@ -17,6 +18,7 @@ class Book(models.Model):
 
 
 class Chapter(models.Model):
+    id = models.AutoField(primary_key=True)
     book = models.ForeignKey(Book, on_delete=models.CASCADE)
     title = models.CharField(max_length=200, unique=True)
     numeral = models.IntegerField(default=1)
