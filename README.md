@@ -1,14 +1,36 @@
 # Library Service
 
-## Setup steps
+## Getting Started
 
 Install [poetry](https://python-poetry.org/) following their guide.
 
+Then run,
+
 ```sh
 poetry install
+poetry run pre-commit install
 poetry run python manage.py runserver
-poetry run pyright # type check
+
+# optional: set this up in your terminal config once
+alias ppym="poetry run python manage.py"
 ```
+
+Note: If you have multiple poetry projects, you might need to activate the repository's `venv` first.
+
+### Regular Development
+
+```sh
+# start Django dev server
+poetry run python manage.py runserver
+
+# type check
+poetry run pyright
+
+# lint (automatically executed on git commit)
+poetry run black .
+```
+
+See `launch.json` for debug configurations. Works well with VS Code.
 
 ## Tech Stack
 

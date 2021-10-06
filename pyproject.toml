@@ -16,6 +16,7 @@ pyright = "^0.0.10"
 django-types = "^0.8.1"
 hypothesis = "^6.23.1"
 black = "^21.9b0"
+pre-commit = "^2.15.0"
 # and https://github.com/microsoft/pyright/blob/main/docs/configuration.md#sample-pyprojecttoml-file
 [tool.pyright]
 include = ["."]
