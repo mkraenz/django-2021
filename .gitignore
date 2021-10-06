@@ -23,3 +23,7 @@ media
 .idea/**/gradle.xml
 .idea/**/libraries
 *.iws /out/
+
+# hypothesis database
+# see https://hypothesis.readthedocs.io/en/latest/database.html
+.hypothesis

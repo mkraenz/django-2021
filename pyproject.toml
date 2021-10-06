@@ -15,6 +15,7 @@ autopep8 = "^1.5.7"
 # See https://github.com/microsoft/pyright/blob/main/docs/getting-started.md
 pyright = "^0.0.10"
 django-types = "^0.8.1"
+hypothesis = "^6.23.1"
 # and https://github.com/microsoft/pyright/blob/main/docs/configuration.md#sample-pyprojecttoml-file
 [tool.pyright]
 include = ["."]
