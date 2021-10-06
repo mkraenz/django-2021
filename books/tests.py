@@ -1,6 +1,7 @@
 from datetime import date, timedelta
 
 from django.urls.base import reverse
+from django.utils import formats
 from hypothesis import given, strategies
 from hypothesis.extra.django import TestCase
 
@@ -68,3 +69,31 @@ class BookIndexViewTests(TestCase):
         self.assertNotContains(response, future_book2.author)
         self.assertContains(response, todays_book.title)
         self.assertQuerysetEqual(response.context["books"], [todays_book])  # type: ignore
+
+
+class BookDetailsViewTests(TestCase):
+    def test_displays_book_details_for_today(self):
+        book = create_book("book title", 0, "book author")
+        response = self.client.get(reverse("books:book_details", args=[book.id]))
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, book.title)
+        self.assertContains(response, book.author)
+        # format reference: https://strftime.org/
+        self.assertContains(response, book.pub_date.strftime("%b. %-d, %Y"))
+
+    @given(strategies.integers(0, 10))
+    def test_displays_details_for_past(self, days: int):
+        book = create_book("book title", days, "book author")
+
+        response = self.client.get(reverse("books:book_details", args=[book.id]))
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, book.title)
+        self.assertContains(response, book.author)
+        self.assertContains(response, formats.date_format(book.pub_date, "DATE_FORMAT"))
+
+    @given(strategies.integers(1, 367))
+    def test_404_Not_Found_for_future(self, days_in_the_future: int):
+        book = create_book("book title", -days_in_the_future, "book author")
+        response = self.client.get(reverse("books:book_details", args=[book.id]))
+        self.assertEqual(response.status_code, 404)

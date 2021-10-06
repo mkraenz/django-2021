@@ -1,6 +1,7 @@
 # Create your views here.
 from datetime import date
 
+from django.db.models.query import QuerySet
 from django.http import HttpRequest, HttpResponse
 from django.http.response import HttpResponseRedirect
 from django.shortcuts import render
@@ -21,6 +22,9 @@ class IndexView(generic.ListView):
 class BookDetailsView(generic.DetailView):
     template_name = "books/book_details.html"
     model = Book
+
+    def get_queryset(self) -> "QuerySet[Book]":
+        return Book.objects.filter(pub_date__lte=date.today())
 
 
 class BookChaptersView(generic.DetailView):
