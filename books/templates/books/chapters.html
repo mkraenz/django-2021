@@ -1,26 +1,22 @@
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Py Library - Chapter Overview</title>
-  </head>
-  <body>
-    <h1>{{ book.title }}</h1>
-    <h2>Chapters</h2>
-    {% if book.chapter_set.all %}
-    <ol>
-      {% for chapter in book.chapter_set.all %}
-      <li>
-        <a href="{% url 'books:chapter_details' book.id chapter.id %}"
-          >{{ chapter.title }}</a
-        >
-      </li>
-      {% endfor %}
-    </ol>
-    {% else %}
-    <p>No chapters found.</p>
-    {% endif %}
-    <a href="{% url 'books:book_details' book.id %}"><p>🔙</p></a>
-  </body>
-</html>
+{% extends "base.html" %} 
+
+{% block title %}Books{% endblock %} 
+
+{% block content%}
+<h1>{{ book.title }}</h1>
+<h2>Chapters</h2>
+{% if book.chapter_set.all %}
+<ol>
+  {% for chapter in book.chapter_set.all %}
+  <li>
+    <a href="{% url 'books:chapter_details' book.id chapter.id %}"
+      >{{ chapter.title }}</a
+    >
+  </li>
+  {% endfor %}
+</ol>
+{% else %}
+<p>No chapters found.</p>
+{% endif %}
+<a href="{% url 'books:book_details' book.id %}"><p>🔙</p></a>
+{% endblock %}

@@ -1,54 +1,38 @@
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+{% extends "base.html" %} 
 
-    {% load static %}
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="{% static 'polls/style.css' %}"
-    />
+{% block title %}Books{% endblock %} 
+{% block header %}Books{% endblock %} 
 
-    <title>Py Library - Books</title>
-  </head>
-  <body>
-    <h1>Py Library</h1>
-    <h2>Books</h2>
-    {% if books %}
-    <ul>
-      {% for book in books %}
-      <li><a href="{% url 'books:book_details' book.id %}">{{ book }}</a></li>
-      {% endfor %}
-    </ul>
-    {% else %}
-    <p>No books found</p>
+{% block content %}
+<h1>Py Library</h1>
+<h2>Books</h2>
+{% if books %}
+<ul>
+  {% for book in books %}
+  <li><a href="{% url 'books:book_details' book.id %}">{{ book }}</a></li>
+  {% endfor %}
+</ul>
+{% else %}
+<p>No books found</p>
+{% endif %}
+<h2>Submit own book</h2>
+<form action="{% url 'books:add' %}" method="post">
+  {% csrf_token %}
+  <fieldset>
+    <legend>Enter information</legend>
+    {% if error_message %}
+    <p><strong>{{ error_message }}</strong></p>
     {% endif %}
-    <h2>Submit own book</h2>
-    <form action="{% url 'books:add' %}" method="post">
-      {% csrf_token %}
-      <fieldset>
-        <legend>Enter information</legend>
-        {% if error_message %}
-        <p><strong>{{ error_message }}</strong></p>
-        {% endif %}
-        <label for="title">Title</label>
-        <input
-          type="text"
-          name="title"
-          id="title"
-          value="{{ new_book.title }}"
-        />
-        <label for="author">Author</label>
-        <input
-          type="text"
-          name="author"
-          id="author"
-          value="{{ new_book.author }}"
-        />
-        <input type="submit" value="Submit" />
-      </fieldset>
-    </form>
-  </body>
-</html>
+    <label for="title">Title</label>
+    <input type="text" name="title" id="title" value="{{ new_book.title }}" />
+    <label for="author">Author</label>
+    <input
+      type="text"
+      name="author"
+      id="author"
+      value="{{ new_book.author }}"
+    />
+    <input type="submit" value="Submit" />
+  </fieldset>
+</form>
+{% endblock %}
