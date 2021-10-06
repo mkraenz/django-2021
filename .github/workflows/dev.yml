@@ -33,4 +33,4 @@ jobs:
       - name: Type-check
         run: poetry run pyright
       - name: Tests
-        run: echo todo write me
+        run: poetry run manage.py test
