@@ -59,8 +59,12 @@ ppym migrate OPTIONAL_APP OPTIONAL_MIGRATION_NUMBER
 #### Interactive shell
 ppym shell
 
-#### Format code but exclude migrations
+
+#### Linting
+poetry run black .
+# excluding migrations
 poetry run black . --exclude '^.*\b(migrations)\b.*$'
+
 ```
 
 ## Links
