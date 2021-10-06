@@ -39,7 +39,9 @@ See `launch.json` for debug configurations. Works well with VS Code.
 - [Poetry](https://www.poetryfoundation.org/) - package manager
 - [Pyright](https://github.com/microsoft/pyright) - static type checking
 - [Black](https://black.readthedocs.io/en/stable/index.html) - linting
+- [Pre-commit](https://pre-commit.com/) - git hooks
 - [Hypothesis](https://hypothesis.readthedocs.io/en/latest/index.html) - property-based testing
+- Github Actions - CI
 
 ## FAQ
 
