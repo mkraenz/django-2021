@@ -10,6 +10,15 @@ poetry run python manage.py runserver
 poetry run pyright # type check
 ```
 
+## Tech Stack
+
+- Python >=3.6
+- Django - Web Framework
+- [Poetry](https://www.poetryfoundation.org/) - package manager
+- [Pyright](https://github.com/microsoft/pyright) - static type checking
+- [Black](https://black.readthedocs.io/en/stable/index.html) - linting
+- [Hypothesis](https://hypothesis.readthedocs.io/en/latest/index.html) - property-based testing
+
 ## FAQ
 
 ### Pylance errors
@@ -50,8 +59,8 @@ ppym migrate OPTIONAL_APP OPTIONAL_MIGRATION_NUMBER
 #### Interactive shell
 ppym shell
 
-
-
+#### Format code but exclude migrations
+poetry run black . --exclude '^.*\b(migrations)\b.*$'
 ```
 
 ## Links

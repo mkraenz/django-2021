@@ -5,17 +5,17 @@ description = ""
 authors = ["Mirco Kraenz <kraenzmirco@gmail.com>"]
 
 [tool.poetry.dependencies]
-python = "^3.6"
+python = "^3.6.2"
 Django = "^3.2.7"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"
-autopep8 = "^1.5.7"
 
 # See https://github.com/microsoft/pyright/blob/main/docs/getting-started.md
 pyright = "^0.0.10"
 django-types = "^0.8.1"
 hypothesis = "^6.23.1"
+black = "^21.9b0"
 # and https://github.com/microsoft/pyright/blob/main/docs/configuration.md#sample-pyprojecttoml-file
 [tool.pyright]
 include = ["."]
