@@ -37,7 +37,7 @@ jobs:
         run: poetry run coverage run --source='.' manage.py test
 
       - name: Coverage
-        run: poetry run coverage report --fail-under=90
+        run: poetry run coverage report --fail-under=91
 
   lint:
     runs-on: ubuntu-latest
