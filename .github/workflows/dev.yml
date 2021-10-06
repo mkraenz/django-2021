@@ -33,4 +33,4 @@ jobs:
       - name: Type-check
         run: poetry run pyright
       - name: Tests
-        run: poetry run manage.py test
+        run: poetry run python manage.py test
