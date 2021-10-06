@@ -13,7 +13,9 @@ from books.models import Book, Chapter
 class IndexView(generic.ListView):
     template_name = "books/index.html"
     context_object_name = "books"
-    model = Book
+
+    def get_queryset(self):
+        return Book.objects.filter(pub_date__lte=date.today()).order_by("title")
 
 
 class BookDetailsView(generic.DetailView):
