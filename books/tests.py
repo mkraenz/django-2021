@@ -12,7 +12,6 @@ a_year_ago = date.today() - timedelta(days=367)
 
 
 class BookModelTests(TestCase):
-
     def test_was_published_today_for_today_is_true(self):
         today = date.today()
         book = Book(pub_date=today)

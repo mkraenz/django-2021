@@ -1,4 +1,3 @@
-
 # Create your views here.
 from datetime import date
 
@@ -12,8 +11,8 @@ from books.models import Book, Chapter
 
 
 class IndexView(generic.ListView):
-    template_name = 'books/index.html'
-    context_object_name = 'books'
+    template_name = "books/index.html"
+    context_object_name = "books"
     model = Book
 
 
@@ -27,15 +26,19 @@ class BookChaptersView(generic.DetailView):
     model = Book
 
 
-def chapter_details(request: HttpRequest, book_id: int, chapter_numeral: int) -> HttpResponse:
+def chapter_details(
+    request: HttpRequest, book_id: int, chapter_numeral: int
+) -> HttpResponse:
     book = Book.objects.get(id=book_id)
     chapter: Chapter = book.chapter_set.get(numeral=chapter_numeral)
-    return render(request, 'books/chapter_details.html', {'book': book, 'chapter': chapter})
+    return render(
+        request, "books/chapter_details.html", {"book": book, "chapter": chapter}
+    )
 
 
 def add_book(request: HttpRequest) -> HttpResponse:
-    title: str = request.POST['title']
-    author: str = request.POST['author']
+    title: str = request.POST["title"]
+    author: str = request.POST["author"]
     book = Book(title=title, author=author, pub_date=date.today())
     book.save()
-    return HttpResponseRedirect(reverse('books:book_details', args=(book.id, )))
+    return HttpResponseRedirect(reverse("books:book_details", args=(book.id,)))

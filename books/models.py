@@ -1,4 +1,3 @@
-
 import datetime
 
 from django.db import models
@@ -14,7 +13,7 @@ class Book(models.Model):
     chapter_set: "models.Manager[Chapter]"
 
     def __str__(self):
-        return f'{self.title} --- {self.author}'
+        return f"{self.title} --- {self.author}"
 
     def was_published_today(self) -> bool:
         return self.pub_date == datetime.date.today()
@@ -29,4 +28,4 @@ class Chapter(models.Model):
     objects: "models.Manager[Chapter]"
 
     def __str__(self):
-        return f'{self.book.title} --- {self.numeral} - {self.title}'
+        return f"{self.book.title} --- {self.numeral} - {self.title}"
