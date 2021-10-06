@@ -33,13 +33,10 @@ jobs:
       - name: Type-check
         run: poetry run pyright
 
-      - name: Tests
-        run: poetry run python manage.py test
-
-      - name: Coverage
-        uses: dc740/django-coveragepy-github-action@0.9
-        with:
-          minimum-coverage: 90
+      - name: Tests & Coverage
+        run: |
+          poetry run coverage run --source='.' manage.py test
+          poetry run coverage report --fail-under=90
 
   lint:
     runs-on: ubuntu-latest
