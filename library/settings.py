@@ -10,22 +10,41 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
+import os
 from pathlib import Path
+from typing import Callable
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+
+csv_to_list: "Callable[[str], list[str]]" = lambda s: list(
+    map(lambda x: x.strip(), s.split(","))
+)
+
+
+class Env:
+    secret_key = os.environ.get("SECRET_KEY")
+    allowed_hosts = (
+        csv_to_list(os.environ["ALLOWED_HOSTS"])
+        if os.environ.get("ALLOWED_HOSTS")
+        else []
+    )
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-cw&s7bs50#*l^c(^udub9#!4io6bm5#b299j7luzi7tarwzqwg"
+SECRET_KEY = (
+    Env.secret_key
+    or "django-insecure-cw&s7bs50#*l^c(^udub9#!4io6bm5#b299j7luzi7tarwzqwg"
+)
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False if Env.secret_key else True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["localhost"]
 
 
 # Application definition
@@ -55,7 +74,7 @@ ROOT_URLCONF = "library.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": [BASE_DIR / "templates"],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [

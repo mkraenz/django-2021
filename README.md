@@ -36,6 +36,14 @@ poetty run coverage report
 
 See `launch.json` for debug configurations. Works well with VS Code.
 
+## Deployments
+
+```shell
+# fix all problems in
+manage.py check --deploy
+
+```
+
 ## Tech Stack
 
 - Python >=3.6
@@ -98,3 +106,5 @@ poetry run black . --exclude '^.*\b(migrations)\b.*$'
 ## Links
 
 - [Awesome Django](https://github.com/wsvincent/awesome-django)
+- [Django Deployment Guide](https://docs.djangoproject.com/en/3.2/howto/deployment/)
+- [Django Deployment Checklist](https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/)
