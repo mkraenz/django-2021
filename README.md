@@ -28,6 +28,10 @@ poetry run pyright
 
 # lint (automatically executed on git commit)
 poetry run black .
+
+# coverage
+poetry run coverage run --source='.' manage.py test
+poetty run coverage report
 ```
 
 See `launch.json` for debug configurations. Works well with VS Code.
