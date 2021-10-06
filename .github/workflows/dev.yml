@@ -33,10 +33,11 @@ jobs:
       - name: Type-check
         run: poetry run pyright
 
-      - name: Tests & Coverage
-        run: |
-          poetry run coverage run --source='.' manage.py test
-          poetry run coverage report --fail-under=89
+      - name: Tests
+        run: poetry run coverage run --source='.' manage.py test
+
+      - name: Coverage
+        run: poetry run coverage report --fail-under=90
 
   lint:
     runs-on: ubuntu-latest
