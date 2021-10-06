@@ -27,13 +27,19 @@ jobs:
           path: .venv
           key: venv-${{ runner.os }}-${{ hashFiles('**/poetry.lock') }}
       - name: Install dependencies
-        run: poetry install
         if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
+        run: poetry install
 
       - name: Type-check
         run: poetry run pyright
+
       - name: Tests
         run: poetry run python manage.py test
+
+      - name: Coverage
+        uses: actions/python-django-coverage-gitHub-action@0.9
+        with:
+          minimum-coverage: 90
 
   lint:
     runs-on: ubuntu-latest

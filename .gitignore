@@ -24,6 +24,8 @@ media
 .idea/**/libraries
 *.iws /out/
 
-# hypothesis database
+##### CUSTOM
+
 # see https://hypothesis.readthedocs.io/en/latest/database.html
 .hypothesis
+.coverage
