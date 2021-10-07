@@ -101,6 +101,8 @@ poetry run black .
 # excluding migrations
 poetry run black . --exclude '^.*\b(migrations)\b.*$'
 
+#### Deployment
+poetry run gunicorn library.wsgi
 ```
 
 ## Links
