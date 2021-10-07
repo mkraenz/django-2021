@@ -29,4 +29,4 @@ RUN poetry run python manage.py check --deploy
 
 EXPOSE 80
 # allow connections from outside the container https://stackoverflow.com/a/60183567/3963260
-CMD poetry run gunicorn --bind 0.0.0.0:80 library.wsgi
+CMD poetry run gunicorn --bind 0.0.0.0:80 library.wsgi --access-logfile - --error-logfile -
