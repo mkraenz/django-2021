@@ -21,6 +21,7 @@ COPY manage.py .
 COPY books ./books
 COPY library ./library
 COPY templates ./templates
+COPY utils ./utils
 
 RUN poetry run python manage.py migrate
 
