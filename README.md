@@ -54,6 +54,8 @@ manage.py check --deploy
 - [Pre-commit](https://pre-commit.com/) - git hooks
 - [Hypothesis](https://hypothesis.readthedocs.io/en/latest/index.html) - property-based testing
 - Github Actions - CI
+- Docker - Containerization
+- [gunicorn](https://gunicorn.org/) with [gevent](http://www.gevent.org/) - wsgi compatible webserver
 
 ## FAQ
 
