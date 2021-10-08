@@ -32,9 +32,6 @@ COPY utils ./utils
 # TODO make this work
 RUN poetry run python manage.py check --deploy
 
-# allow connections from outside the container https://stackoverflow.com/a/60183567/3963260
-# CMD poetry run gunicorn --bind 0.0.0.0:80 --worker-class gevent --access-logfile - --error-logfile - --workers $GUNICORN_WORKERS library.wsgi
-
 ################################################################################
 # Production
 ################################################################################
@@ -45,7 +42,6 @@ FROM python:3.9-slim as prod
 ARG GUNICORN_WORKERS=2
 ENV GUNICORN_WORKERS=$GUNICORN_WORKERS
 
-# todo consider rename of user and group to django
 ENV HOME=/home/app
 ENV APP_HOME=/home/app/web
 RUN mkdir -p $HOME
@@ -62,9 +58,6 @@ RUN rm -rf ./wheels
 RUN chown -R app:app $APP_HOME
 
 USER app
-# NOTE: currently this creates a sqlite db in $APP_HOME. To give app user write permissions, call this command as app user
-# TODO: Probably dont run migrations during build?
-# RUN python manage.py migrate
 
 EXPOSE 80
 ENTRYPOINT ["/home/app/web/entrypoint.prod.sh"]

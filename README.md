@@ -105,6 +105,9 @@ poetry run black . --exclude '^.*\b(migrations)\b.*$'
 
 #### Deployment
 poetry run gunicorn library.wsgi
+
+# use docker-compose to run migrations
+docker-compose exec web python manage.py migrate --noinput
 ```
 
 ## Links
