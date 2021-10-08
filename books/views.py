@@ -33,10 +33,10 @@ class BookChaptersView(generic.DetailView):
 
 
 def chapter_details(
-    request: HttpRequest, book_id: int, chapter_numeral: int
+    request: HttpRequest, book_id: int, chapter_id: int
 ) -> HttpResponse:
     book = Book.objects.get(id=book_id)
-    chapter: Chapter = book.chapter_set.get(numeral=chapter_numeral)
+    chapter: Chapter = book.chapter_set.get(id=chapter_id)
     return render(
         request, "books/chapter_details.html", {"book": book, "chapter": chapter}
     )
