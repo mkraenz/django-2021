@@ -9,6 +9,7 @@ python = "^3.8.12"
 Django = "^3.2.7"
 gunicorn = "^20.1.0"
 gevent = "^21.8.0"
+psycopg2-binary = "^2.9.1"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"

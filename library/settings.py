@@ -18,17 +18,15 @@ from typing import Callable
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
-csv_to_list: "Callable[[str], list[str]]" = lambda s: list(
-    map(lambda x: x.strip(), s.split(","))
+whitespace_separated_values_to_list: "Callable[[str], list[str]]" = lambda s: list(
+    filter(lambda x: x and x != " ", s.split(" "))
 )
 
 
 class Env:
     secret_key = os.environ.get("SECRET_KEY")
-    allowed_hosts = (
-        csv_to_list(os.environ["ALLOWED_HOSTS"])
-        if os.environ.get("ALLOWED_HOSTS")
-        else []
+    allowed_hosts = whitespace_separated_values_to_list(
+        os.environ.get("ALLOWED_HOSTS", "")
     )
 
 
@@ -96,8 +94,13 @@ WSGI_APPLICATION = "library.wsgi.application"
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+        # prod uses provided sql engine, dev uses sqlite
+        "ENGINE": os.environ.get("SQL_ENGINE", "django.db.backends.sqlite3"),
+        "NAME": os.environ.get("SQL_DATABASE", BASE_DIR / "db.sqlite3"),
+        "USER": os.environ.get("SQL_USER", "user"),
+        "PASSWORD": os.environ.get("SQL_PASSWORD", "password"),
+        "HOST": os.environ.get("SQL_HOST", "localhost"),
+        "PORT": os.environ.get("SQL_PORT", "5432"),
     }
 }
 
@@ -139,6 +142,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = "/static/"
+STATIC_ROOT = BASE_DIR / "staticfiles"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field

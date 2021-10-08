@@ -1,0 +1,36 @@
+version: "3.8"
+
+services:
+  web:
+    build: .
+    command: bash -c "python manage.py migrate --noinput && gunicorn --bind 0.0.0.0:8080 --worker-class gevent --access-logfile - --error-logfile - --workers 2 library.wsgi"
+    # command:
+    # command: docker-compose exec web python manage.py migrate --noinput
+    volumes:
+      - static_volume:/home/app/web/staticfiles
+    ports:
+      - 8080:8080
+    env_file:
+      - ./.env.dev
+    restart: always
+    depends_on:
+      - db
+  db:
+    image: postgres:13.0-alpine
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    env_file:
+      # TODO use prod
+      - ./.env.dev
+  # nginx:
+  #   build: ./nginx
+  #   volumes:
+  #     - static_volume:/home/app/web/staticfiles
+  #   ports:
+  #     - 1337:80
+  #   depends_on:
+  #     - web
+
+volumes:
+  postgres_data:
+  static_volume:

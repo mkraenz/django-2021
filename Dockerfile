@@ -15,6 +15,7 @@ RUN pip install poetry==$POETRY_VERSION
 COPY pyproject.toml poetry.lock ./
 
 RUN poetry install --no-dev --no-interaction --no-ansi
+
 RUN poetry export --format requirements.txt --output requirements.txt
 RUN pip wheel --no-cache-dir --no-deps --wheel-dir ./wheels -r requirements.txt
 
@@ -63,9 +64,7 @@ RUN chown -R app:app $APP_HOME
 USER app
 # NOTE: currently this creates a sqlite db in $APP_HOME. To give app user write permissions, call this command as app user
 # TODO: Probably dont run migrations during build?
-RUN python manage.py migrate
+# RUN python manage.py migrate
 
 EXPOSE 80
-# allow connections from outside the container https://stackoverflow.com/a/60183567/3963260
-CMD gunicorn --bind 0.0.0.0:80 --worker-class gevent --access-logfile - --error-logfile - --workers $GUNICORN_WORKERS library.wsgi
-# ENTRYPOINT ["/home/app/web/entrypoint.prod.sh"]
+ENTRYPOINT ["/home/app/web/entrypoint.prod.sh"]
