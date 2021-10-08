@@ -31,7 +31,6 @@ COPY utils ./utils
 # TODO make this work
 RUN poetry run python manage.py check --deploy
 
-EXPOSE 80
 # allow connections from outside the container https://stackoverflow.com/a/60183567/3963260
 # CMD poetry run gunicorn --bind 0.0.0.0:80 --worker-class gevent --access-logfile - --error-logfile - --workers $GUNICORN_WORKERS library.wsgi
 
@@ -66,6 +65,7 @@ USER app
 # TODO: Probably dont run migrations during build?
 RUN python manage.py migrate
 
+EXPOSE 80
 # allow connections from outside the container https://stackoverflow.com/a/60183567/3963260
 CMD gunicorn --bind 0.0.0.0:80 --worker-class gevent --access-logfile - --error-logfile - --workers $GUNICORN_WORKERS library.wsgi
 # ENTRYPOINT ["/home/app/web/entrypoint.prod.sh"]

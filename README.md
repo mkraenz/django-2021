@@ -46,7 +46,7 @@ manage.py check --deploy
 
 ## Tech Stack
 
-- Python >=3.6
+- Python >=3.8
 - Django - Web Framework
 - [Poetry](https://www.poetryfoundation.org/) - package manager
 - [Pyright](https://github.com/microsoft/pyright) - static type checking
