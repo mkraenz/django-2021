@@ -29,3 +29,6 @@ media
 # see https://hypothesis.readthedocs.io/en/latest/database.html
 .hypothesis
 .coverage
+
+.env*
+!.env.sample
