@@ -28,6 +28,7 @@ class Env:
     allowed_hosts = whitespace_separated_values_to_list(
         os.environ.get("ALLOWED_HOSTS", "")
     )
+    admin_url = os.environ.get("ADMIN_URL", "admin/")
 
 
 # Quick-start development settings - unsuitable for production
@@ -65,7 +66,8 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
-    "utils.stats.stats_middleware",
+    "utils.middlewares.stats.stats_middleware",
+    "utils.middlewares.servername.servername",
 ]
 
 ROOT_URLCONF = "library.urls"
@@ -140,11 +142,11 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
-
 STATIC_URL = "/static/"
-STATIC_ROOT = BASE_DIR / "staticfiles"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+ADMIN_URL = Env.admin_url

@@ -16,7 +16,9 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 
+from .settings import ADMIN_URL
+
 urlpatterns = [
-    path("admin/", admin.site.urls),
+    path(ADMIN_URL, admin.site.urls),
     path("", include("books.urls")),
 ]
