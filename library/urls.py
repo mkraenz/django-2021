@@ -14,12 +14,45 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
+from django.contrib.auth.models import User
 from django.urls import include, path
+from rest_framework import permissions, routers, serializers, viewsets
+
+from books.rest import BookViewSet, ChapterViewSet
 
 from .settings import ADMIN_URL
 
+
+# Serializers define the API representation.
+class UserSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:  # type: ignore
+        model = User
+        fields = [
+            "url",
+            "username",
+            "email",
+            "is_staff",
+        ]
+
+
+# ViewSets define the view behavior.
+class UserViewSet(viewsets.ModelViewSet):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+
+# Routers provide an easy way of automatically determining the URL conf.
+router = routers.DefaultRouter()
+router.register("users", UserViewSet)
+router.register("books", BookViewSet)
+router.register("chapters", ChapterViewSet)
+
+
 urlpatterns = [
+    path("rest/", include(router.urls)),
     path(ADMIN_URL, admin.site.urls),
-    path("", include("books.urls")),
+    path("books/", include("books.urls")),
     path("i18n/", include("django.conf.urls.i18n")),
+    path("api-auth/", include("rest_framework.urls", namespace="rest_framework")),
 ]

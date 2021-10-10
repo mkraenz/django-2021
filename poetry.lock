@@ -153,6 +153,14 @@ optional = false
 python-versions = ">=3.6,<4.0"
 
 [[package]]
+name = "djangorestframework-types"
+version = "0.6.0"
+description = "Type stubs for Django Rest Framework"
+category = "dev"
+optional = false
+python-versions = ">=3.7,<4.0"
+
+[[package]]
 name = "filelock"
 version = "3.3.0"
 description = "A platform independent file lock."
@@ -527,7 +535,7 @@ testing = ["coverage (>=5.0.3)", "zope.event", "zope.testing"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8.12"
-content-hash = "565f0b55ec0e1fe371d8d17dc913f198087fb8689137e01555cece363e908389"
+content-hash = "0bcfbd879d437527424fc538238f984d3f29c7cd4129fb4bcf5203f1247e43b7"
 
 [metadata.files]
 asgiref = [
@@ -655,6 +663,10 @@ django = [
 django-types = [
     {file = "django-types-0.8.1.tar.gz", hash = "sha256:95458f2cbdeb2761e8c53008deabd36dc0392c6113a382968effc54e3fecf222"},
     {file = "django_types-0.8.1-py3-none-any.whl", hash = "sha256:07a0bd3e96b11e8e0949d7f89d2b52dc12cd665aa9425e54d1dde77b6ea95e96"},
+]
+djangorestframework-types = [
+    {file = "djangorestframework-types-0.6.0.tar.gz", hash = "sha256:60e3a9170af6550ca79c1da83c4db434d8c035ab9a0c5032783fddc27f56f3ac"},
+    {file = "djangorestframework_types-0.6.0-py3-none-any.whl", hash = "sha256:16dbe0d033e27470ef9853f7b543320bd0280fdf115f33e6a2ad5a50add7a17a"},
 ]
 filelock = [
     {file = "filelock-3.3.0-py3-none-any.whl", hash = "sha256:bbc6a0382fe8ec4744ecdf6683a2e07f65eb10ff1aff53fc02a202565446cde0"},
