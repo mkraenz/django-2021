@@ -2,6 +2,7 @@ from datetime import date, timedelta
 
 from django.urls.base import reverse
 from django.utils import formats
+from django.utils.translation import activate
 from hypothesis import given, strategies
 from hypothesis.extra.django import TestCase
 
@@ -37,6 +38,7 @@ def create_book(title: str, age_in_days: int, author: str) -> Book:
 
 class BookIndexViewTests(TestCase):
     def test_no_books(self):
+        activate("en-us")
         response = self.client.get(reverse("books:index"))
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, "No books found")
