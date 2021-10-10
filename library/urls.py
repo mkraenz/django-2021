@@ -19,6 +19,7 @@ from django.urls import include, path
 from rest_framework import permissions, routers, serializers, viewsets
 
 from books.rest import BookViewSet, ChapterViewSet
+from snippets.views import SnippetViewSet
 
 from .settings import ADMIN_URL
 
@@ -47,6 +48,7 @@ router = routers.DefaultRouter()
 router.register("users", UserViewSet)
 router.register("books", BookViewSet)
 router.register("chapters", ChapterViewSet)
+router.register("snippets", SnippetViewSet)
 
 
 urlpatterns = [
