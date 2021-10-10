@@ -34,7 +34,10 @@ jobs:
         run: poetry run pyright
 
       - name: Compile localizations for tests
-        run: poetry run django-admin compilemessages
+        run: |
+          sudo apt update
+          sudo apt install -y gettext 
+          poetry run django-admin compilemessages
 
       - name: Tests
         run: poetry run coverage run --source='.' manage.py test
