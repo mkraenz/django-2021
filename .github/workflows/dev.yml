@@ -33,6 +33,9 @@ jobs:
       - name: Type-check
         run: poetry run pyright
 
+      - name: Compile localizations for tests
+        run: poetry run django-admin compilemessages
+
       - name: Tests
         run: poetry run coverage run --source='.' manage.py test
 
