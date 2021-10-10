@@ -153,6 +153,17 @@ optional = false
 python-versions = ">=3.6,<4.0"
 
 [[package]]
+name = "djangorestframework"
+version = "3.12.4"
+description = "Web APIs for Django, made easy."
+category = "main"
+optional = false
+python-versions = ">=3.5"
+
+[package.dependencies]
+django = ">=2.2"
+
+[[package]]
 name = "djangorestframework-types"
 version = "0.6.0"
 description = "Type stubs for Django Rest Framework"
@@ -543,7 +554,7 @@ testing = ["coverage (>=5.0.3)", "zope.event", "zope.testing"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8.12"
-content-hash = "aa5e528514b1573e195466a6547f5b1ccd828d5e6541b054aeb9af8848a2991f"
+content-hash = "2b1ca32241e483b49cb3e307d9178df1bfb5ac08e38750c296e6a9100ae2f153"
 
 [metadata.files]
 asgiref = [
@@ -671,6 +682,10 @@ django = [
 django-types = [
     {file = "django-types-0.8.1.tar.gz", hash = "sha256:95458f2cbdeb2761e8c53008deabd36dc0392c6113a382968effc54e3fecf222"},
     {file = "django_types-0.8.1-py3-none-any.whl", hash = "sha256:07a0bd3e96b11e8e0949d7f89d2b52dc12cd665aa9425e54d1dde77b6ea95e96"},
+]
+djangorestframework = [
+    {file = "djangorestframework-3.12.4-py3-none-any.whl", hash = "sha256:6d1d59f623a5ad0509fe0d6bfe93cbdfe17b8116ebc8eda86d45f6e16e819aaf"},
+    {file = "djangorestframework-3.12.4.tar.gz", hash = "sha256:f747949a8ddac876e879190df194b925c177cdeb725a099db1460872f7c0a7f2"},
 ]
 djangorestframework-types = [
     {file = "djangorestframework-types-0.6.0.tar.gz", hash = "sha256:60e3a9170af6550ca79c1da83c4db434d8c035ab9a0c5032783fddc27f56f3ac"},
