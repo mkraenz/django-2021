@@ -1,11 +1,12 @@
 {% extends "base.html" %} 
+{% load i18n %}
 
-{% block title %}Books{% endblock %} 
-{% block header %}Books{% endblock %} 
+{% block title %}{% translate "Books" %}{% endblock %} 
+{% block header %}{% translate "Books" %}{% endblock %} 
 
 {% block content %}
 <h1>Py Library</h1>
-<h2>Books</h2>
+<h2>{% translate "Books" %}</h2>
 {% if books %}
 <ul>
   {% for book in books %}
@@ -13,26 +14,29 @@
   {% endfor %}
 </ul>
 {% else %}
-<p>No books found</p>
+<p>{% translate 'NoBooksFound' %}</p>
 {% endif %}
-<h2>Submit own book</h2>
+<h2>{% translate 'SubmitBookHeader' %}</h2>
 <form action="{% url 'books:add' %}" method="post">
   {% csrf_token %}
   <fieldset>
-    <legend>Enter information</legend>
+    <legend>{% translate "SubmitBookLegend" %}</legend>
     {% if error_message %}
     <p><strong>{{ error_message }}</strong></p>
     {% endif %}
-    <label for="title">Title</label>
+    {% comment %}Translators: Form field Title{% endcomment %}
+    <label for="title">{% translate "SubmitBookTitle" %}</label>
     <input type="text" name="title" id="title" value="{{ new_book.title }}" />
-    <label for="author">Author</label>
+    <label for="author">{% translate "SubmitBookAuthor" %}</label>
     <input
       type="text"
       name="author"
       id="author"
       value="{{ new_book.author }}"
     />
-    <input type="submit" value="Submit" />
+    <input type="submit" value="{% translate 'SubmitBookButton' %}" />
   </fieldset>
 </form>
+
+{% include "books/language-dropdown.html" %}
 {% endblock %}

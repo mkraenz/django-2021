@@ -32,3 +32,6 @@ media
 
 .env*
 !.env.sample
+
+# generated compiled translations
+**/*.mo

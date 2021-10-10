@@ -13,4 +13,5 @@ urlpatterns = [
         name="chapter_details",
     ),
     path("add/", views.add_book, name="add"),
+    path("translation/", views.translation_test, name="translation"),
 ]

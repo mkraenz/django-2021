@@ -108,6 +108,17 @@ poetry run gunicorn library.wsgi
 
 # use docker-compose to run migrations
 docker-compose exec web python manage.py migrate --noinput
+
+#### Translations / i18n / i10n
+# https://phrase.com/blog/posts/quick-guide-django-i18n/
+mkdir MY_APP/locale
+cd MY_APP
+# creates a .po file in MY_APP/locale/de/LC_MESSAGES/
+poetry run django-admin makemessages --locale en --locale de --locale ja
+# manually translate the stuff, then
+poetry run django-admin compilemessages
+# manually restart dev server
+# changing language header in chrome -> chrome://settings/?search=language
 ```
 
 ## Links

@@ -6,6 +6,7 @@ from django.http import HttpRequest, HttpResponse
 from django.http.response import HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
+from django.utils.translation import gettext as _
 from django.views import generic
 
 from books.models import Book, Chapter
@@ -48,3 +49,9 @@ def add_book(request: HttpRequest) -> HttpResponse:
     book = Book(title=title, author=author, pub_date=date.today())
     book.save()
     return HttpResponseRedirect(reverse("books:book_details", args=(book.id,)))
+
+
+def translation_test(req: HttpRequest) -> HttpResponse:
+
+    output = _("Welcome to my site.")
+    return HttpResponse(output)
