@@ -30,6 +30,7 @@ include = ["."]
 # strict = ["."] # TODO enable
 useLibraryCodeForTypes = true
 reportMissingImports = true
+# reportUnusedImport = true
 reportMissingTypeStubs = true
 
 [build-system]
