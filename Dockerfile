@@ -20,9 +20,12 @@ RUN poetry export --format requirements.txt --output requirements.txt
 RUN pip wheel --no-cache-dir --no-deps --wheel-dir ./wheels -r requirements.txt
 
 COPY manage.py .
+COPY astronauts ./astronauts
 COPY books ./books
 COPY library ./library
+COPY snippets ./snippets
 COPY templates ./templates
+COPY utils ./utils
 COPY py_library_service ./py_library_service
 COPY utils ./utils
 
