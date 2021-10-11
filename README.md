@@ -109,6 +109,9 @@ poetry run gunicorn library.wsgi
 # use docker-compose to run migrations
 docker-compose exec web python manage.py migrate --noinput
 
+# generate secret key
+poetry run python -c 'from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())'
+
 #### Translations / i18n / i10n
 # https://phrase.com/blog/posts/quick-guide-django-i18n/
 mkdir MY_APP/locale
@@ -119,6 +122,7 @@ poetry run django-admin makemessages --locale en --locale de --locale ja
 poetry run django-admin compilemessages
 # manually restart dev server
 # changing language header in chrome -> chrome://settings/?search=language
+
 ```
 
 ## Links
