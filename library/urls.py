@@ -18,21 +18,21 @@ from django.urls import include, path
 from rest_framework import routers
 
 from books.rest import BookViewSet, ChapterViewSet
+from snippets.serializers import UserViewSet
 from snippets.views import SnippetViewSet
 
 from .settings import ADMIN_URL
 
 # Routers provide an easy way of automatically determining the URL conf.
 router = routers.DefaultRouter()
-# router.register("users", UserList.as_view())
 router.register("books", BookViewSet)
 router.register("chapters", ChapterViewSet)
 router.register("snippets", SnippetViewSet)
+router.register("users", UserViewSet)
 
 
 urlpatterns = [
     path("rest/", include(router.urls)),
-    path("rest/", include("snippets.urls")),
     path(ADMIN_URL, admin.site.urls),
     path("books/", include("books.urls")),
     path("i18n/", include("django.conf.urls.i18n")),

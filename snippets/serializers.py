@@ -1,5 +1,5 @@
 from django.contrib.auth.models import User
-from rest_framework import generics, permissions, serializers
+from rest_framework import permissions, serializers, viewsets
 
 
 # Serializers define the API representation.
@@ -13,13 +13,7 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
         fields = ["url", "username", "email", "is_staff", "snippets"]
 
 
-class UserList(generics.ListAPIView):
-    queryset = User.objects.all()
-    serializer_class = UserSerializer
-    permission_classes = [permissions.IsAuthenticated]
-
-
-class UserDetails(generics.RetrieveAPIView):
+class UserViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
     permission_classes = [permissions.IsAuthenticated]

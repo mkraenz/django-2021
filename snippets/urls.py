@@ -1,12 +1,13 @@
 from django.urls import path
 
-from snippets.serializers import UserDetails, UserList
-from snippets.views import SnippetHighlight, api_root2
+from snippets.serializers import UserViewSet
+from snippets.views import SnippetHighlight
 
 urlpatterns = [
-    path("users/", UserList.as_view(), name="users"),
-    path("users/<int:pk>/", UserDetails.as_view(), name="user-detail"),
-    path("bla/", api_root2, name="api-root2"),  # not working :/
+    path("users/", UserViewSet.as_view({"get": "list"}), name="user-list"),
+    path(
+        "users/<int:pk>/", UserViewSet.as_view({"get": "retrieve"}), name="user-detail"
+    ),
     path(
         "snippets/<int:pk>/highlight/",
         SnippetHighlight.as_view(),

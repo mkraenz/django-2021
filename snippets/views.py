@@ -48,15 +48,3 @@ class SnippetHighlight(generics.GenericAPIView):
     def get(self, request: Request, *args: str, **kwargs: str) -> Response:
         snippet: Snippet = self.get_object()
         return Response(snippet.highlighted)
-
-
-@api_view(["GET"])
-def api_root2(
-    request: Request, format: "Optional[Literal['html', 'json']]" = None
-) -> Response:
-    return Response(
-        {
-            "users": reverse("snippets:users", request=request, format=format),
-            # "snippets": reverse("snippet-list", request=request, format=format),
-        }
-    )
