@@ -19,7 +19,7 @@ from rest_framework import routers
 
 from books.rest import BookViewSet, ChapterViewSet
 from snippets.serializers import UserViewSet
-from snippets.views import SnippetViewSet
+from snippets.views import SnippetHighlight, SnippetViewSet
 
 from .settings import ADMIN_URL
 
@@ -33,6 +33,11 @@ router.register("users", UserViewSet)
 
 urlpatterns = [
     path("rest/", include(router.urls)),
+    path(
+        "rest/snippets/<int:pk>/highlight/",
+        SnippetHighlight.as_view(),
+        name="snippet-highlight",
+    ),
     path(ADMIN_URL, admin.site.urls),
     path("books/", include("books.urls")),
     path("i18n/", include("django.conf.urls.i18n")),
