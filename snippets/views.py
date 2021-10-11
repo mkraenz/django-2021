@@ -12,6 +12,11 @@ class SnippetSerializer(serializers.HyperlinkedModelSerializer):
         view_name="snippet-highlight", format="html"
     )
 
+    def validate_title(self, value: str) -> str:
+        if len(value) < 3:
+            raise serializers.ValidationError("Must be at least 3 characters long")
+        return value
+
     class Meta:  # type: ignore
         model = Snippet
         fields = [
