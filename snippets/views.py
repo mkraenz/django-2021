@@ -1,4 +1,4 @@
-from typing import Optional
+from typing import Literal, Optional
 
 from rest_framework import generics, permissions, renderers, serializers, viewsets
 from rest_framework.decorators import api_view
@@ -10,12 +10,25 @@ from snippets.models import Snippet
 from snippets.permissions import IsOwnerOrReadOnly
 
 
-class SnippetSerializer(serializers.ModelSerializer):
+class SnippetSerializer(serializers.HyperlinkedModelSerializer):
     owner = serializers.ReadOnlyField(source="owner.username")
+    highlight = serializers.HyperlinkedIdentityField(
+        view_name="snippet-highlight", format="html"
+    )
 
     class Meta:  # type: ignore
         model = Snippet
-        fields = ["id", "title", "code", "linenos", "language", "style", "owner"]
+        fields = [
+            "url",
+            "id",
+            "highlight",
+            "title",
+            "code",
+            "linenos",
+            "language",
+            "style",
+            "owner",
+        ]
         read_only_fields = ["owner"]
 
 
@@ -38,7 +51,9 @@ class SnippetHighlight(generics.GenericAPIView):
 
 
 @api_view(["GET"])
-def api_root2(request: Request, format: "Optional[str]" = None) -> Response:
+def api_root2(
+    request: Request, format: "Optional[Literal['html', 'json']]" = None
+) -> Response:
     return Response(
         {
             "users": reverse("snippets:users", request=request, format=format),

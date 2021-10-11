@@ -1,13 +1,11 @@
 from django.contrib.auth.models import User
 from rest_framework import generics, permissions, serializers
 
-from snippets.models import Snippet
-
 
 # Serializers define the API representation.
 class UserSerializer(serializers.HyperlinkedModelSerializer):
-    snippets = serializers.PrimaryKeyRelatedField(
-        many=True, queryset=Snippet.objects.all()
+    snippets = serializers.HyperlinkedRelatedField(
+        many=True, view_name="snippet-detail", read_only=True
     )
 
     class Meta:  # type: ignore
