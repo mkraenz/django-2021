@@ -32,8 +32,8 @@ router.register("snippets", SnippetViewSet)
 
 urlpatterns = [
     path("rest/", include(router.urls)),
+    path("rest/", include("snippets.urls")),
     path(ADMIN_URL, admin.site.urls),
-    path("snippets/", include("snippets.urls")),
     path("books/", include("books.urls")),
     path("i18n/", include("django.conf.urls.i18n")),
     path("api-auth/", include("rest_framework.urls", namespace="rest_framework")),
