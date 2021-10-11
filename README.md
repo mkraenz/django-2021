@@ -126,3 +126,4 @@ poetry run django-admin compilemessages
 - [Awesome Django](https://github.com/wsvincent/awesome-django)
 - [Django Deployment Guide](https://docs.djangoproject.com/en/3.2/howto/deployment/)
 - [Django Deployment Checklist](https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/)
+- [Beautify Django Template](https://prettydiff.com/?m=beautify)

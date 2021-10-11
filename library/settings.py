@@ -58,6 +58,7 @@ INSTALLED_APPS = [
     "rest_framework",
     "books.apps.BooksConfig",
     "snippets.apps.SnippetsConfig",
+    "astronauts.apps.AstronautsConfig",
 ]
 
 MIDDLEWARE = [

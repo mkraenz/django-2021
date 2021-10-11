@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}
+    {% translate "Astronauts" %}
+{% endblock %}
+
+{% block header %}
+    {% translate "Astronauts" %}
+{% endblock %}
+
+{% block content %}
+<h1>Py Library</h1>
+<h2>{% translate "Astronauts" %}</h2>
+<p>
+    {% blocktranslate %}Currently there are
+        {{ number_of_people }}
+        people in space.{% endblocktranslate %}
+        {% if people %}
+            <ul>
+                {% for person in people %}
+                    <li>
+                        {% blocktranslate with name=person.name craft=person.craft %}{{ name }} is on the {{ craft }}{% endblocktranslate%}
+                    </li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endblock %}
+</p>

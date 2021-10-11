@@ -40,6 +40,7 @@ urlpatterns = [
     ),
     path(ADMIN_URL, admin.site.urls),
     path("books/", include("books.urls")),
+    path("astronauts/", include("astronauts.urls")),
     path("i18n/", include("django.conf.urls.i18n")),
     path("api-auth/", include("rest_framework.urls", namespace="rest_framework")),
 ]

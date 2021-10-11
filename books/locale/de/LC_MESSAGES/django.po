@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-10 12:34+0200\n"
+"POT-Creation-Date: 2021-10-11 10:09+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,40 +18,40 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: templates/books/index.html:4 templates/books/index.html:5
-#: templates/books/index.html:9
+#: books/templates/books/index.html:4 books/templates/books/index.html:5
+#: books/templates/books/index.html:9
 msgid "Books"
 msgstr "Bücher"
 
-#: templates/books/index.html:17
+#: books/templates/books/index.html:17
 msgid "NoBooksFound"
 msgstr "Keine Bücher gefunden"
 
-#: templates/books/index.html:19
+#: books/templates/books/index.html:19
 msgid "SubmitBookHeader"
 msgstr "Sende dein eigenes Buch ein"
 
-#: templates/books/index.html:23
+#: books/templates/books/index.html:23
 msgid "SubmitBookLegend"
 msgstr "Bitte Informationen eintragen"
 
 #. Translators: Form field Title
-#: templates/books/index.html:28
+#: books/templates/books/index.html:28
 msgid "SubmitBookTitle"
 msgstr "Titel"
 
-#: templates/books/index.html:30
+#: books/templates/books/index.html:30
 msgid "SubmitBookAuthor"
 msgstr "Author"
 
-#: templates/books/index.html:37
+#: books/templates/books/index.html:37
 msgid "SubmitBookButton"
 msgstr "Senden"
 
-#: templates/books/language-dropdown.html:3
+#: books/templates/books/language-dropdown.html:3
 msgid "Hello"
 msgstr "Hallo"
 
-#: templates/books/language-dropdown.html:4 views.py:56
+#: books/templates/books/language-dropdown.html:4 books/views.py:56
 msgid "Welcome to my site."
 msgstr "Willkommen auf meiner Seite."
