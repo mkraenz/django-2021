@@ -6,12 +6,7 @@ from .models import Book, Chapter
 class BookSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:  # type: ignore
         model = Book
-        fields = [
-            "title",
-            "author",
-            "pub_date",
-            "was_published_today",
-        ]
+        fields = ["title", "author", "pub_date", "was_published_today", "chapter_set"]
 
 
 class BookViewSet(viewsets.ModelViewSet):
