@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-12 17:07+0200\n"
+"POT-Creation-Date: 2021-10-12 20:59+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,19 +20,23 @@ msgstr ""
 
 #: astronauts/templates/astronauts/index.html:5
 #: astronauts/templates/astronauts/index.html:9
-#: astronauts/templates/astronauts/index.html:14
+#: astronauts/templates/astronauts/index.html:15
 msgid "Astronauts"
 msgstr "宇宙飛行士"
 
-#: astronauts/templates/astronauts/index.html:16
-#, python-format
+#: astronauts/templates/astronauts/index.html:17
+#, fuzzy, python-format
+#| msgid ""
+#| "Currently there are\n"
+#| "        %(number_of_people)s\n"
+#| "        people in space."
 msgid ""
 "Currently there are\n"
-"        %(number_of_people)s\n"
-"        people in space."
+"            %(number_of_people)s\n"
+"            people in space."
 msgstr "今は%(number_of_people)s人の宇宙飛行士が宇宙にいます。"
 
-#: astronauts/templates/astronauts/index.html:23
+#: astronauts/templates/astronauts/index.html:24
 #, python-format
 msgid "%(name)s is on the %(craft)s"
 msgstr "%(name)sさんは宇宙船の%(craft)s にいます"

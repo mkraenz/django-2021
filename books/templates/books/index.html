@@ -5,38 +5,40 @@
 {% block header %}{% translate "Books" %}{% endblock %} 
 
 {% block content %}
-<h1>Py Library</h1>
-<h2>{% translate "Books" %}</h2>
-{% if books %}
-<ul>
-  {% for book in books %}
-  <li><a href="{% url 'books:book_details' book.id %}">{{ book }}</a></li>
-  {% endfor %}
-</ul>
-{% else %}
-<p>{% translate 'NoBooksFound' %}</p>
-{% endif %}
-<h2>{% translate 'SubmitBookHeader' %}</h2>
-<form action="{% url 'books:add' %}" method="post">
-  {% csrf_token %}
-  <fieldset>
-    <legend>{% translate "SubmitBookLegend" %}</legend>
-    {% if error_message %}
-    <p><strong>{{ error_message }}</strong></p>
-    {% endif %}
-    {% comment %}Translators: Form field Title{% endcomment %}
-    <label for="title">{% translate "SubmitBookTitle" %}</label>
-    <input type="text" name="title" id="title" value="{{ new_book.title }}" />
-    <label for="author">{% translate "SubmitBookAuthor" %}</label>
-    <input
-      type="text"
-      name="author"
-      id="author"
-      value="{{ new_book.author }}"
-    />
-    <input type="submit" value="{% translate 'SubmitBookButton' %}" />
-  </fieldset>
-</form>
+<div class="container">
+  <h1>Py Library</h1>
+  <h2>{% translate "Books" %}</h2>
+  {% if books %}
+  <ul>
+    {% for book in books %}
+    <li><a href="{% url 'books:book_details' book.id %}">{{ book }}</a></li>
+    {% endfor %}
+  </ul>
+  {% else %}
+  <p>{% translate 'NoBooksFound' %}</p>
+  {% endif %}
+  <h2>{% translate 'SubmitBookHeader' %}</h2>
+  <form action="{% url 'books:add' %}" method="post">
+    {% csrf_token %}
+    <fieldset>
+      <legend>{% translate "SubmitBookLegend" %}</legend>
+      {% if error_message %}
+      <p><strong>{{ error_message }}</strong></p>
+      {% endif %}
+      {% comment %}Translators: Form field Title{% endcomment %}
+      <label for="title">{% translate "SubmitBookTitle" %}</label>
+      <input type="text" name="title" id="title" value="{{ new_book.title }}" />
+      <label for="author">{% translate "SubmitBookAuthor" %}</label>
+      <input
+        type="text"
+        name="author"
+        id="author"
+        value="{{ new_book.author }}"
+      />
+      <input type="submit" value="{% translate 'SubmitBookButton' %}" />
+    </fieldset>
+  </form>
 
-{% include "books/language-dropdown.html" %}
+  {% include "books/language-dropdown.html" %}
+</div>
 {% endblock %}

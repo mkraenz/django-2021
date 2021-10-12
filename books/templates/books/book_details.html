@@ -3,6 +3,7 @@
 {% block title %}Chapter Overview{% endblock %} 
 
 {% block content%}
+<div class="container">
     <h1>{{ book.title }}</h1>
     <p>Author: {{ book.author }}</p>
     <p>Published: {{ book.pub_date }}</p>
@@ -10,4 +11,5 @@
       <button type="button" class="btn btn-primary">Chapter overview</button></a
     >
     <a href="{% url 'books:index' %}"><p>🔙</p></a>
+</div>
 {% endblock %}
