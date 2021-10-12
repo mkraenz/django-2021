@@ -13,8 +13,7 @@ services:
     expose:
       - 8080
     env_file:
-      # TODO use prod
-      - ./.env.dev
+      - ./.env.prod
     restart: always
     depends_on:
       - db
@@ -24,8 +23,7 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data/
     env_file:
-      # TODO use prod
-      - ./.env.dev
+      - ./.env.db.prod
 
   # reverse-proxy and static file serving
   nginx:
