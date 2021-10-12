@@ -136,9 +136,9 @@ AUTH_PASSWORD_VALIDATORS = [
 
 
 LANGUAGES = (
-    ("en-us", "English (AE)"),
-    ("de-de", "Deutsch"),
-    ("ja-jp", "日本語"),
+    ("en-us", "🇬🇧 English"),
+    ("de-de", "🇩🇪 Deutsch"),
+    ("ja-jp", "🇯🇵 日本語"),
 )
 LANGUAGE_CODE = "en-us"
 

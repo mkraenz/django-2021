@@ -13,11 +13,13 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from django.conf.urls.i18n import i18n_patterns
 from django.contrib import admin
 from django.urls import include, path
 from rest_framework import routers
 
 from books.rest import BookViewSet, ChapterViewSet
+from library.views import language_redirect
 from snippets.serializers import UserViewSet
 from snippets.views import SnippetHighlight, SnippetViewSet
 
@@ -30,6 +32,15 @@ router.register("chapters", ChapterViewSet)
 router.register("snippets", SnippetViewSet)
 router.register("users", UserViewSet)
 
+localized_urlpatterns = i18n_patterns(
+    path("", include("library.localizer.urls")),
+    path("books/", include("books.urls")),
+    path("astronauts/", include("astronauts.urls")),
+    path("i18n/", include("django.conf.urls.i18n")),
+    path("api-auth/", include("rest_framework.urls", namespace="rest_framework")),
+    prefix_default_language=True,
+)
+
 
 urlpatterns = [
     path("rest/", include(router.urls)),
@@ -38,10 +49,7 @@ urlpatterns = [
         SnippetHighlight.as_view(),
         name="snippet-highlight",
     ),
-    path("", include("library.localizer.urls")),
+    path("/<str:new_lang>", language_redirect, name="language-redirect"),
     path(ADMIN_URL, admin.site.urls),
-    path("books/", include("books.urls")),
-    path("astronauts/", include("astronauts.urls")),
-    path("i18n/", include("django.conf.urls.i18n")),
-    path("api-auth/", include("rest_framework.urls", namespace="rest_framework")),
+    *localized_urlpatterns,
 ]
