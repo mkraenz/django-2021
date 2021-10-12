@@ -123,6 +123,12 @@ poetry run django-admin compilemessages
 # manually restart dev server
 # changing language header in chrome -> chrome://settings/?search=language
 
+#### Subapps
+mkdir parentapp/subapp
+poetry run django-admin startapp subapp parentapp/subapp
+# add to settings.py
+#    "parentapp.subapp.apps.SubappConfig",
+# change `parentapp.subapp.apps.SubappConfig`'s name property to "parentapp.subapp"
 ```
 
 ## Links
