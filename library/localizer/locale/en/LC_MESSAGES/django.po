@@ -1,58 +1,23 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
-#, fuzzy
-msgid ""
-msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-12 20:59+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-
 #: library/localizer/templates/localizer/index.html:4
 msgid "Localizer"
 msgstr "DjLocalizer"
 
 #: library/localizer/templates/localizer/index.html:14
 msgid "landingPageTitle"
-msgstr "DjLocalizer"
+msgstr "Translations for Django can be so easy - with DjLocalizer"
 
 #: library/localizer/templates/localizer/index.html:23
-#, fuzzy
-#| msgid "landingPageTitle"
 msgid "landingPageEmailPlaceholder"
 msgstr "Email address"
 
 #: library/localizer/templates/localizer/index.html:25
-#, fuzzy
-#| msgid "landingPageTitle"
 msgid "landingPageEmailRequired"
 msgstr "Email address required"
 
 #: library/localizer/templates/localizer/index.html:27
-#, fuzzy
-#| msgid "landingPageLead"
 msgid "landingPageEmailInvalid"
 msgstr "Please insert a valid email address"
 
 #: library/localizer/templates/localizer/index.html:31
-#, fuzzy
-#| msgid "landingPageTitle"
 msgid "landingPageSubmit"
-msgstr "Start"
-
-#, fuzzy
-#~| msgid "description"
-#~ msgid "landingPageDescription"
-#~ msgstr ""
-#~ "Python Django translations never was as with DjLocalizer. Get started "
-#~ "today."
+msgstr "Get Started"
