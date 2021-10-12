@@ -49,7 +49,7 @@ urlpatterns = [
         SnippetHighlight.as_view(),
         name="snippet-highlight",
     ),
-    path("/<str:new_lang>", language_redirect, name="language-redirect"),
+    path("<str:new_lang>", language_redirect, name="language-redirect"),
     path(ADMIN_URL, admin.site.urls),
     *localized_urlpatterns,
 ]
