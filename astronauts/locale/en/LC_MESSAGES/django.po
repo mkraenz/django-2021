@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-11 10:12+0200\n"
+"POT-Creation-Date: 2021-10-12 14:28+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,12 +18,13 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: templates/astronauts/index.html:5 templates/astronauts/index.html:9
-#: templates/astronauts/index.html:14
+#: astronauts/templates/astronauts/index.html:5
+#: astronauts/templates/astronauts/index.html:9
+#: astronauts/templates/astronauts/index.html:14
 msgid "Astronauts"
 msgstr "Astronauts"
 
-#: templates/astronauts/index.html:16
+#: astronauts/templates/astronauts/index.html:16
 #, python-format
 msgid ""
 "Currently there are\n"
@@ -31,7 +32,7 @@ msgid ""
 "        people in space."
 msgstr "Currently there are %(number_of_people)s people in space."
 
-#: templates/astronauts/index.html:23
+#: astronauts/templates/astronauts/index.html:23
 #, python-format
 msgid "%(name)s is on the %(craft)s"
 msgstr "%(name)s is on the %(craft)s"

@@ -18,21 +18,20 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: astronauts/templates/astronauts/index.html:5
-#: astronauts/templates/astronauts/index.html:9
-#: astronauts/templates/astronauts/index.html:14
-msgid "Astronauts"
-msgstr "宇宙飛行士"
+#: library/localizer/templates/localizer/index.html:4
+msgid "Localizer"
+msgstr "Djローカライザー"
 
-#: astronauts/templates/astronauts/index.html:16
-#, python-format
-msgid ""
-"Currently there are\n"
-"        %(number_of_people)s\n"
-"        people in space."
-msgstr "今は%(number_of_people)s人の宇宙飛行士が宇宙にいます。"
+#: library/localizer/templates/localizer/index.html:8
+msgid "landingPageTitle"
+msgstr "Djローカライザー"
 
-#: astronauts/templates/astronauts/index.html:23
-#, python-format
-msgid "%(name)s is on the %(craft)s"
-msgstr "%(name)sさんは宇宙船の%(craft)s にいます"
+#: library/localizer/templates/localizer/index.html:9
+msgid "landingPageLead"
+msgstr "Djangoの翻訳を簡単に"
+
+#: library/localizer/templates/localizer/index.html:10
+#, fuzzy
+#| msgid "description"
+msgid "landingPageDescription"
+msgstr "Python Djangoの翻訳を簡単に管理できるように今すぐDjローカライザーをスタートしましょう！"

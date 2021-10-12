@@ -59,6 +59,7 @@ INSTALLED_APPS = [
     "books.apps.BooksConfig",
     "snippets.apps.SnippetsConfig",
     "astronauts.apps.AstronautsConfig",
+    "library.localizer.apps.LocalizerConfig",
 ]
 
 MIDDLEWARE = [

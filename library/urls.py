@@ -38,6 +38,7 @@ urlpatterns = [
         SnippetHighlight.as_view(),
         name="snippet-highlight",
     ),
+    path("", include("library.localizer.urls")),
     path(ADMIN_URL, admin.site.urls),
     path("books/", include("books.urls")),
     path("astronauts/", include("astronauts.urls")),
