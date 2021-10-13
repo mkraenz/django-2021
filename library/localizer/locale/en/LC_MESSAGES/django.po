@@ -24,7 +24,7 @@ msgstr "DjLocalizer"
 
 #: library/localizer/templates/localizer/index.html:14
 msgid "landingPageTitle"
-msgstr "Translations for Django can be so easy - with DjLocalizer"
+msgstr "Translations for Django can be so easy. Save valuable time."
 
 #: library/localizer/templates/localizer/index.html:23
 msgid "landingPageEmailPlaceholder"
