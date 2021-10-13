@@ -15,13 +15,14 @@
       integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF"
       crossorigin="anonymous"
     />
-
+    
     {% load static %}
     <link
       rel="stylesheet"
       type="text/css"
       href="{% static 'books/style.css' %}"
     />
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js"></script>
     <title>DjLocalizer - {% block title %}{% endblock %}</title>
 
     {% comment %} favicon {% endcomment %}
@@ -30,6 +31,20 @@
     <link rel="icon" type="image/png" sizes="16x16" href="{% static 'books/favicon-16x16.png' %} ">
     <link rel="manifest" href="{% static 'books/site.webmanifest' %} ">
     {% comment %} end favicon {% endcomment %}
+
+    {% comment %} set django_language cookie on lang select {% endcomment %}
+    <script>
+      {% for lang in LANGUAGES %}
+        window.addEventListener('load', () => {
+          const id = 'lang-select-{{ lang.0 }}'
+          const langSelect = document.getElementById(id);
+          langSelect.addEventListener('click', () => {
+            Cookies.set('django_language', '{{ lang.0 }}');
+          });
+        });
+      {% endfor %}
+    </script>
+    {% comment %} set django_language cookie on lang select {% endcomment %}
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -75,7 +90,7 @@
                 {% with request.path|make_list|slice:'7:'|join:'' as PATH_WITHOUT_LANG %}
                   {% for lang in LANGUAGES %}
                     <li>
-                      <a class="dropdown-item" href="/{{ lang.0 }}/{{ PATH_WITHOUT_LANG }}">{{lang.1}}</a>
+                      <a class="dropdown-item" id="lang-select-{{ lang.0 }}" href="/{{ lang.0 }}/{{ PATH_WITHOUT_LANG }}">{{lang.1}}</a>
                     </li>
                   {% endfor %}
                 {% endwith %}
