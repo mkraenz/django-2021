@@ -131,6 +131,21 @@ poetry run django-admin startapp subapp parentapp/subapp
 # change `parentapp.subapp.apps.SubappConfig`'s name property to "parentapp.subapp"
 ```
 
+### UnicodeDecodeError
+
+```log
+UnicodeDecodeError at /ja-jp/
+'ascii' codec can't decode byte 0xe3 in position 2: ordinal not in range(128)
+
+...
+
+
+Unicode error hint
+The string that could not be encoded/decoded was: Dj������
+```
+
+This means that the encoding of the compiled translation files is not correct. Make sure plaintext translation files `.po` include proper meta data.
+
 ## Links
 
 - [Awesome Django](https://github.com/wsvincent/awesome-django)

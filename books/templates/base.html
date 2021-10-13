@@ -72,11 +72,13 @@
                 class="dropdown-menu dropdown-menu-end"
                 aria-labelledby="navbarDropdown"
               >
-                {% for lang in LANGUAGES %}
-                  <li>
-                    <a class="dropdown-item" href="{% url 'language-redirect' new_lang=lang.0 %}">{{lang.1}}</a>
-                  </li>
-                {% endfor %}
+                {% with request.path|make_list|slice:'7:'|join:'' as PATH_WITHOUT_LANG %}
+                  {% for lang in LANGUAGES %}
+                    <li>
+                      <a class="dropdown-item" href="/{{ lang.0 }}/{{ PATH_WITHOUT_LANG }}">{{lang.1}}</a>
+                    </li>
+                  {% endfor %}
+                {% endwith %}
               </ul>
             </li>
           </ul>
